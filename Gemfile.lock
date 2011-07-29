@@ -51,6 +51,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    message_block (1.0.4)
+      rails (>= 3.0.0)
     mime-types (1.16)
     mysql2 (0.2.11)
     net-scp (1.0.4)
@@ -104,6 +106,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   capistrano-ext
+  message_block
   mysql2 (~> 0.2.6)
   rails (~> 3.0.9)
   ruby-debug19
