@@ -30,6 +30,9 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find(params[:id])
+    @profile.confirm_email = @profile.email
+    @profile.media_formats = @profile.media_formats.split(",")
+    @profile.equipment_access = @profile.equipment_access.split(",")
     @districts = ["Toronto", "Vaughan"]
     @key_issues = ["Politics", "Technology", "Business", "Arts"]
   end
@@ -38,7 +41,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(params[:profile])
     @districts = ["Toronto", "Vaughan"]
     @key_issues = ["Politics", "Technology", "Business", "Arts"]
-    @profile.convert("media_formats", params[:profile].delete!("media_formats"))
+    @profile.convert("media_formats", params[:profile].delete(:media_formats))
+    @profile.convert("equipment_access", params[:profile].delete(:equipment_access))
 
     respond_to do |format|
       if @profile.save
@@ -55,7 +59,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @districts = ["Toronto", "Vaughan"]
     @key_issues = ["Politics", "Technology", "Business", "Arts"]
-    @profile.convert("media_formats", params[:profile].delete("media_formats"))
+    @profile.convert("media_formats", params[:profile].delete(:media_formats))
+    @profile.convert("equipment_access", params[:profile].delete(:equipment_access))
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

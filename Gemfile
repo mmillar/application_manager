@@ -5,6 +5,7 @@ gem 'mysql2', '~> 0.2.6'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'message_block'
+gem 'validates_email_format_of'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -2,18 +2,21 @@
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>District</th>
   </tr>
 
-<% @profiles.each do |profile| %>
-  <tr>
-    <td><%= link_to 'Show', profile %></td>
-    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-    <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @profiles.each do |profile| %>
+    <tr>
+      <td><%= "#{profile.first_name} #{profile.last_name}" %></td>
+      <td><%= profile.email %></td>
+      <td><%= profile.district %></td>
+      <td><%= link_to 'Show', profile %></td>
+      <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+      <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
 <br />
