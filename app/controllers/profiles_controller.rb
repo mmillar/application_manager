@@ -46,6 +46,8 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
+        ProfileMailer.initial_application(@profile).deliver
+        ProfileMailer.thank_you(@profile).deliver
         format.html { redirect_to(@profile, :notice => 'Profile was successfully created.') }
         format.xml  { render :xml => @profile, :status => :created, :location => @profile }
       else
