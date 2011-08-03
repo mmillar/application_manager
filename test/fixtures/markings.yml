@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  qualified: false
+  approved: false
+  bio_editied: false
+  photo_editied: false
+  offer_sent: 2011-08-03 13:25:29
+  offer_accepted: 2011-08-03 13:25:29
+
+two:
+  qualified: false
+  approved: false
+  bio_editied: false
+  photo_editied: false
+  offer_sent: 2011-08-03 13:25:29
+  offer_accepted: 2011-08-03 13:25:29

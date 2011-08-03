@@ -3,7 +3,7 @@
 <%= form_tag admin_profiles_path, :method => "get" do %>
 Restrict Search by <%= text_field_tag :term, @term %>
 <%= check_box_tag :find_empty, !(@find_empty.nil?) %>Empty
-<%= select_tag :field, options_for_select(Profile.column_names, @field), :include_blank => true %>
+<%= select_tag :field, options_for_select(Profile.column_names << "status", @field), :include_blank => true %>
 <%= submit_tag "Search" %><br>
 <% end %>
 
@@ -28,7 +28,7 @@ Restrict Search by <%= text_field_tag :term, @term %>
     <td><%= "#{profile.first_name} #{profile.last_name}" %></td>
     <td><%= profile.email %></td>
     <td><%= profile.district %></td>
-    <td>Unscored</td>
+    <td><%= (profile.review)? profile.review.status : "Unscored" %></td>
     <td><%= link_to 'Edit', edit_admin_profile_path(profile) %></td>
     <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
@@ -37,8 +37,7 @@ Restrict Search by <%= text_field_tag :term, @term %>
   <tr>
     <td colspan="8">
       <%= image_tag "arrow_ltr.png" %>
-      <%= select_tag :status, options_for_select(Profile::STATUSES), :include_blank => true %>
-      <input type="submit" name="submit" value="Change Status">
+      <%= submit_tag "Send Offer E-mail", :confirm => "Are you sure? This will send an e-mail to all checked recipients" %>
       <%= hidden_field_tag :status_array %>
     </td>
   </tr>

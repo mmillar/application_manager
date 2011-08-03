@@ -1,0 +1,80 @@
+<h2>Admin Review</h2>
+<%= form_for [:admin,review], :remote => true do |f| %>
+<div class="table">
+<div class="tr">
+  <div class="td">
+    Qualified?
+  </div>
+  <div class="td">
+    <div class="radioset">
+      <%= f.radio_button :qualified, "true" %>
+      <%= f.label :qualified_true, "Yes" %>
+      <%= f.radio_button :qualified, "false" %>
+      <%= f.label :qualified_false, "No" %>
+    </div>
+  </div>
+</div>
+<div class="tr">
+  <div class="td">
+    TorStar Approves?
+  </div>
+  <div class="td">
+    <div class="td">
+      <%= f.radio_button :approved, "true" %>
+    </div>
+  </div>
+</div>
+<div class="tr">
+  <div class="td">
+    Offer Sent on
+  </div>
+  <div class="td">
+    <%= (review.offer_sent)? review.offer_sent : "None" %>
+  </div>
+</div>
+<div class="tr">
+  <div class="td">
+    Offer Accepted on
+  </div>
+  <div class="td">
+    <%= (review.offer_accepted)? review.offer_accepted : "None" %>
+  </div>
+</div>
+<div class="tr">
+  <div class="td">
+    Bio Edited?
+  </div>
+  <div class="td">
+    <div class="radioset">
+      <%= f.radio_button :bio_edited, "true" %>
+      <%= f.label :bio_edited_true, "Yes" %>
+      <%= f.radio_button :bio_edited, "false" %>
+      <%= f.label :bio_edited_false, "No" %>
+    </div>
+  </div>
+</div>
+<div class="tr">
+  <div class="td">
+    Photo Edited?
+  </div>
+  <div class="td">
+    <div class="radioset">
+      <%= f.radio_button :photo_edited, "true" %>
+      <%= f.label :photo_edited_true, "Yes" %>
+      <%= f.radio_button :photo_edited, "false" %>
+      <%= f.label :photo_edited_false, "No" %>
+    </div>
+  </div>
+</div>
+</div>
+<div style="width:100%;text-align:center">
+<%= f.submit %>
+</div>
+<% end %>
+
+<script type="text/javascript">
+$(function(){
+  $(".radioset").buttonset();
+});
+</script>
+

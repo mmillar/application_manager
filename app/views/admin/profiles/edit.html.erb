@@ -1,6 +1,13 @@
-<h1>Editing admin_profile</h1>
+<h1>Editing Profile</h1>
 
-<%= render 'form' %>
+<div class="float_form">
+<%= render 'admin/reviews/form', :review => (@profile.review)? @profile.review : Review.create!(:profile_id => @profile.id) %>
+</div>
 
-<%= link_to 'Show', @admin_profile %> |
+<div style="width:60%;margin:0px;">
+<%= form_for [:admin,@profile] do |f| %>
+<%= render 'profiles/form', :f => f %>
+<% end %>
+</div>
+
 <%= link_to 'Back', admin_profiles_path %>

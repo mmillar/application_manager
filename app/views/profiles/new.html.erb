@@ -2,7 +2,9 @@
 Please fill out all fields below in order to apply for a Community Correspondent position. If a specific question does not apply to you, please write “N/A” in the text box beside it.
 </div>
 <div class="bottom">
-<%= render 'form' %>
+<%= form_for @profile do |f| %>
+<%= render 'form', :f => f %>
+<% end %>
 </div>
 
 

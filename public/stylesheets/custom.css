@@ -130,4 +130,14 @@ div#content .bottom h4 {
   margin-bottom:3px;
 }
 
+div.float_form {
+  position:absolute;
+  right:0px;
+  padding:10px;
+  background-color:#EEE;
+  font-size:1.2em;
+}
 
+div.float_form .td {
+  padding:5px;
+}

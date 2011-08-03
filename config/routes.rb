@@ -12,6 +12,7 @@ ApplicationManager::Application.routes.draw do
   
   match "/admin", :to => "admin/profiles#index"
   namespace :admin do
-    resources :profiles, :only => [:new, :index, :edit, :destroy]
+    resources :profiles
+    resources :reviews, :only => [:update]
   end
 end

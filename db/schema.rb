@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802125223) do
+ActiveRecord::Schema.define(:version => 20110803192638) do
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(:version => 20110802125223) do
     t.boolean  "accepted_tos"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "bio"
+    t.string   "picture"
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.boolean  "qualified"
+    t.boolean  "approved"
+    t.boolean  "bio_edited",     :default => false
+    t.boolean  "photo_edited",   :default => false
+    t.datetime "offer_sent"
+    t.datetime "offer_accepted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "profile_id"
   end
 
   create_table "users", :force => true do |t|

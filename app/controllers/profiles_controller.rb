@@ -19,8 +19,6 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
-    @districts = ["Toronto", "Vaughan"]
-    @key_issues = ["Politics", "Technology", "Business", "Arts"]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,19 +31,16 @@ class ProfilesController < ApplicationController
     @profile.confirm_email = @profile.email
     @profile.media_formats = @profile.media_formats.split(",")
     @profile.equipment_access = @profile.equipment_access.split(",")
-    @districts = ["Toronto", "Vaughan"]
-    @key_issues = ["Politics", "Technology", "Business", "Arts"]
   end
 
   def create
     @profile = Profile.new(params[:profile])
-    @districts = ["Toronto", "Vaughan"]
-    @key_issues = ["Politics", "Technology", "Business", "Arts"]
     @profile.convert("media_formats", params[:profile].delete(:media_formats))
     @profile.convert("equipment_access", params[:profile].delete(:equipment_access))
 
     respond_to do |format|
       if @profile.save
+        Review.create!(:profile_id => @profile.id)
         ProfileMailer.initial_application(@profile).deliver
         ProfileMailer.thank_you(@profile).deliver
         format.html { redirect_to(@profile, :notice => 'Profile was successfully created.') }
@@ -61,8 +56,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @districts = ["Toronto", "Vaughan"]
     @key_issues = ["Politics", "Technology", "Business", "Arts"]
-    @profile.convert("media_formats", params[:profile].delete(:media_formats))
-    @profile.convert("equipment_access", params[:profile].delete(:equipment_access))
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

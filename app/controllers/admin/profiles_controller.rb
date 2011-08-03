@@ -6,12 +6,19 @@ class Admin::ProfilesController < ApplicationController
   # GET /admin/profiles.xml
   def index
     @profiles = Profile.all
-    if params[:find_empty]
-     @find_empty = params[:find_empty]
+    if params[:find_empty] && 
+      @find_empty = params[:find_empty]
       @profiles = Profile.where("#{params[:field]} is null OR #{params[:field]} = ''") if params[:field]
     elsif params[:term] && !params[:term].blank?
       @term = params[:term]
-      @profiles = Profile.where("#{params[:field]} = '#{params[:term]}'") if params[:field]
+      if params[:field] == "status"
+        @profiles = []
+        Profile.all.each do |profile|
+          @profiles << profile if (profile.review && profile.review.status.downcase.include?(params[:term].downcase))
+        end
+      else
+        @profiles = Profile.where("#{params[:field]} = '#{params[:term]}'") if params[:field]
+      end
     else
       @profiles = Profile.all
     end
@@ -20,7 +27,6 @@ class Admin::ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @admin_profiles }
     end
   end
 
@@ -31,7 +37,6 @@ class Admin::ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @admin_profile }
     end
   end
 
@@ -42,7 +47,6 @@ class Admin::ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @admin_profile }
     end
   end
 
@@ -54,15 +58,13 @@ class Admin::ProfilesController < ApplicationController
   # POST /admin/profiles
   # POST /admin/profiles.xml
   def create
-    @profile = Profile.new(params[:admin_profile])
+    @profile = Profile.new(params[:profile])
 
     respond_to do |format|
-      if @admin_profile.save
-        format.html { redirect_to(@admin_profile, :notice => 'Profile was successfully created.') }
-        format.xml  { render :xml => @admin_profile, :status => :created, :location => @admin_profile }
+      if @profile.save
+        format.html { redirect_to(admin_profiles_path, :notice => 'Profile was successfully created.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @admin_profile.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -73,12 +75,10 @@ class Admin::ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
 
     respond_to do |format|
-      if @admin_profile.update_attributes(params[:admin_profile])
-        format.html { redirect_to(@admin_profile, :notice => 'Profile was successfully updated.') }
-        format.xml  { head :ok }
+      if @profile.update_attributes(params[:profile])
+        format.html { redirect_to(admin_profiles_path, :notice => 'Profile was successfully updated.') }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @admin_profile.errors, :status => :unprocessable_entity }
       end
     end
   end
