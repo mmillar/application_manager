@@ -38,6 +38,7 @@ Restrict Search by <%= text_field_tag :term, @term %>
     <td colspan="8">
       <%= image_tag "arrow_ltr.png" %>
       <%= submit_tag "Send Offer E-mail", :confirm => "Are you sure? This will send an e-mail to all checked recipients" %>
+      <a href="Javascript:void()" onclick="check_all();">Select All</a>
       <%= hidden_field_tag :status_array %>
     </td>
   </tr>
@@ -47,6 +48,11 @@ Restrict Search by <%= text_field_tag :term, @term %>
 <br />
 
 <script type="text/javascript">
+  cur_check = false;
+  function check_all() {
+    cur_check = !cur_check;
+    $(".sortable input[type=checkbox]").prop("checked", cur_check);
+  }
 </script>
 
 <%= link_to 'New Profile', new_admin_profile_path %>
