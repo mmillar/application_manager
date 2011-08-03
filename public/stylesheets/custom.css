@@ -1,0 +1,125 @@
+body {
+  margin: 30px 0px;
+  padding: 0px;
+  text-align: center;
+  background: url("../images/background.png") top left repeat;
+}
+
+.corner-all {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+}
+
+div#main {
+  position: relative;
+  width: 800px;
+  margin: 0px auto;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+}
+
+#logo {
+  font-family: Georgia;
+  font-style: italic;
+  color: white;
+  font-size: 30pt;
+}
+
+#navbar {
+  position: absolute;
+  right: 0px;
+  top: 50px;
+  font-family: Arial;
+  background-color: #f8f8f8;
+  color: #444;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+#navbar .td{
+  padding: 15px;
+}
+
+#navbar .left-border {
+  border-left: 1px #DDD solid;
+}
+
+div.table {
+  display: table;
+}
+
+div.tr {
+  display: table-row;
+}
+
+div.td{
+  display: table-cell;
+}
+
+div#content .top {
+  margin-top: 15px;
+  padding: 10px;
+  background-color:#F5F5F5;
+  border-left: 7px #222 solid;
+  border-right: 7px #222 solid;
+  border-top: 7px #222 solid;
+  border-bottom: 2px #AAA solid;
+  -moz-border-top-left-radius: 20px;
+  -webkit-border-top-left-radius: 20px;
+  -khtml-border-top-left-radius: 20px;
+  border-top-left-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -webkit-border-top-right-radius: 20px;
+  -khtml-border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+div#content .top h3 {
+  font-size:24pt;
+  font-family:Georgia;
+  font-style: italic;
+  color:#6ba5d0;
+  margin-top:7px;
+  margin-bottom:7px;
+}
+
+div#content .bottom {
+  padding: 5px 30px 25px;
+  background-color:#FFF;
+  border-left: 7px #222 solid;
+  border-right: 7px #222 solid;
+  border-bottom: 7px #222 solid;
+  -moz-border-bottom-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -khtml-border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  -moz-border-bottom-right-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -khtml-border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+div#content .bottom h2 {
+  font-size:26pt;
+  font-family:Georgia;
+  font-style: italic;
+  color:#6ba5d0;
+  margin-top:7px;
+  margin-bottom:7px;
+}
+
+div#content .bottom h4 {
+  font-size:14pt;
+  font-family:Georgia;
+  font-style: italic;
+  color:#999;
+  margin-top:10px;
+  margin-bottom:3px;
+}
+
+

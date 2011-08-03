@@ -4,12 +4,34 @@
   <title>ApplicationManager</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
-  <%= stylesheet_link_tag "message_block" %>
+  <%= stylesheet_link_tag "message_block", "custom" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id="main">
+  <div id="navbar" class="table corner-all">
+    <div class="tr">
+      <div class="td">
+        <%= link_to "Home", root_path %>
+      </div>
+      <div class="td left-border">
+        <%= link_to "Application", application_path %>
+      </div>
+      <div class="td left-border">
+        <%= link_to "FAQ", faq_path %>
+      </div>
+      <div class="td left-border">
+        <%= link_to "Terms of Service", terms_path %>
+      </div>
+    </div>
+  </div>
+  <div id="logo">
+    Logo<br>Placeholder
+  </div>
 
+  <div id="content">
 <%= yield %>
-
+  </div>
+</div>
 </body>
 </html>

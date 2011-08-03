@@ -1,100 +1,188 @@
 <%= form_for(@profile) do |f| %>
   <%= message_block :on => :profile %>
-  <div class="actions">
-    <div>
+  <div class="actions table" style="width:100%">
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :first_name, "First Name" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :first_name %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :last_name, "Last Name" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :last_name %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :email, "E-mail Address" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :email %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :confirm_email, "Confirm E-mail Address" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :confirm_email %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :phone, "Phone Number" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :phone %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :district, "District" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.select :district, @districts, :include_blank => true %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :facebook_url, "Facebook Account URL" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :facebook_url %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :facebook_no_of_friends, "Facebook # of friends" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :facebook_no_of_friends %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :twitter_url, "Twitter Account URL" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :twitter_url %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :twitter_no_of_followers, "Twitter # of followers" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_field :twitter_no_of_followers %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :qualifications, "Qualifications" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_area :qualifications %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :experience, "Journalistic Experience" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_area :experience %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :content_sample, "Content Samples" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_area :content_sample %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :editorial_ideas, "Editorial Ideas" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_area :editorial_ideas %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :key_issue_1, "Key Issue #1" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.select :key_issue_1, @key_issues, :include_blank => true %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :key_issue_2, "Key Issue #2" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.select :key_issue_2, @key_issues, :include_blank => true %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :key_issue_3, "Key Issue #3" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.select :key_issue_3, @key_issues, :include_blank => true %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :media_formats, "Formats You Would Use" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.check_box :media_formats, {:multiple => true}, "Text", nil %>Text<br />
       <%= f.check_box :media_formats, {:multiple => true}, "Video", nil %>Video<br />
       <%= f.check_box :media_formats, {:multiple => true}, "Photos", nil %>Photos<br />
       <%= f.check_box :media_formats, {:multiple => true}, "Audio", nil %>Audio
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :equipment_access, "Access to Equipment" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.check_box :equipment_access, {:multiple => true}, "Webcam", nil %>Webcam<br />
       <%= f.check_box :equipment_access, {:multiple => true}, "Video Camera", nil %>Video Camera<br />
       <%= f.check_box :equipment_access, {:multiple => true}, "Still Camera", nil %>Still Camera<br />
       <%= f.check_box :equipment_access, {:multiple => true}, "iPhone", nil %>iPhone<br />
       <%= f.check_box :equipment_access, {:multiple => true}, "Other Mobile", nil %>Other Mobile
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :conflict_of_interest, "Declare Conflicts of Interest" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_area :conflict_of_interest %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :other_comments, "Other Comments" %>
+      </div>
+      <div class="td" style-="width:75%">
       <%= f.text_area :other_comments %>
+      </div>
     </div>
-    <div>
+    <div class="tr" style="width:100%">
+      <div class="td">
       <%= f.label :accepted_tos, "Do you accept the ToS?" %>
-      <%= f.check_box :accepted_tos %>I accept
+      </div>
+      <div class="td" style-="width:75%">
+      <%= f.check_box :accepted_tos %>
+      </div>
     </div>
     <p>REVIEW APPLICATION NOW. YOU CANNOT MAKE ANY CHANGES ONCE YOU SUBMIT.</p>
     <%= f.submit "Submit Application" %>
