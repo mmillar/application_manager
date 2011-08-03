@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ApplicationManager</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults, "sortable" %>
+  <%= stylesheet_link_tag "message_block", "custom" %>
+  <%= csrf_meta_tag %>
+</head>
+<body style="text-align:left">
+<div id="admin">
+<div id="admin_navbar">
+<div style="float:right;padding:15px;">
+  <div style="float:left;font-weight:bold;color:white">
+    <%= link_to "logout", destroy_user_session_path %>
+  </div>
+</div>
+<div style="font-weight:bold;font-size:2em;color:grey">
+  <%= link_to "Application Manager Backend", admin_profiles_path %>
+</div>
+</div>
+<div id="content" style="background-color:white;padding:10px;margin-top:10px;width:100%">
+  <%= yield %>
+</div>
+</div>
+</body>
+</html>

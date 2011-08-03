@@ -46,7 +46,7 @@
       <%= f.label :district, "District" %>
       </div>
       <div class="td" style-="width:75%">
-      <%= f.select :district, @districts, :include_blank => true %>
+      <%= f.select :district, options_for_select(Profile::DISTRICTS), :include_blank => true %>
       </div>
     </div>
     <div class="tr" style="width:100%">
@@ -118,7 +118,7 @@
       <%= f.label :key_issue_1, "Key Issue #1" %>
       </div>
       <div class="td" style-="width:75%">
-      <%= f.select :key_issue_1, @key_issues, :include_blank => true %>
+      <%= f.select :key_issue_1, options_for_select(Profile::ISSUES), :include_blank => true %>
       </div>
     </div>
     <div class="tr" style="width:100%">
@@ -126,7 +126,7 @@
       <%= f.label :key_issue_2, "Key Issue #2" %>
       </div>
       <div class="td" style-="width:75%">
-      <%= f.select :key_issue_2, @key_issues, :include_blank => true %>
+      <%= f.select :key_issue_2, options_for_select(Profile::ISSUES), :include_blank => true %>
       </div>
     </div>
     <div class="tr" style="width:100%">
@@ -134,7 +134,7 @@
       <%= f.label :key_issue_3, "Key Issue #3" %>
       </div>
       <div class="td" style-="width:75%">
-      <%= f.select :key_issue_3, @key_issues, :include_blank => true %>
+      <%= f.select :key_issue_3, options_for_select(Profile::ISSUES), :include_blank => true %>
       </div>
     </div>
     <div class="tr" style="width:100%">

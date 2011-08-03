@@ -19,6 +19,14 @@ div#main {
   text-align: left;
 }
 
+div#main a { color: #444; }
+div#main a:visited { color: #444; }
+div#main a:hover { color: #444; }
+
+div#admin_navbar a { color: white; }
+div#admin_navbar a:visited { color: white; }
+div#admin_navbar a:hover { color: white; }
+
 a {
   text-decoration: none;
 }

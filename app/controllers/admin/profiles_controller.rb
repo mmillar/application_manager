@@ -1,10 +1,22 @@
 class Admin::ProfilesController < ApplicationController
   before_filter :authenticate_user!
+  layout "admin"
 
   # GET /admin/profiles
   # GET /admin/profiles.xml
   def index
-    @admin_profiles = Profile.all
+    @profiles = Profile.all
+    if params[:find_empty]
+     @find_empty = params[:find_empty]
+      @profiles = Profile.where("#{params[:field]} is null OR #{params[:field]} = ''") if params[:field]
+    elsif params[:term] && !params[:term].blank?
+      @term = params[:term]
+      @profiles = Profile.where("#{params[:field]} = '#{params[:term]}'") if params[:field]
+    else
+      @profiles = Profile.all
+    end
+    
+    @field = params[:field]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +27,7 @@ class Admin::ProfilesController < ApplicationController
   # GET /admin/profiles/1
   # GET /admin/profiles/1.xml
   def show
-    @admin_profile = Profile.find(params[:id])
+    @profile = Profile.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +38,7 @@ class Admin::ProfilesController < ApplicationController
   # GET /admin/profiles/new
   # GET /admin/profiles/new.xml
   def new
-    @admin_profile = Profile.new
+    @profile = Profile.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,13 +48,13 @@ class Admin::ProfilesController < ApplicationController
 
   # GET /admin/profiles/1/edit
   def edit
-    @admin_profile = Profile.find(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   # POST /admin/profiles
   # POST /admin/profiles.xml
   def create
-    @admin_profile = Profile.new(params[:admin_profile])
+    @profile = Profile.new(params[:admin_profile])
 
     respond_to do |format|
       if @admin_profile.save
@@ -58,7 +70,7 @@ class Admin::ProfilesController < ApplicationController
   # PUT /admin/profiles/1
   # PUT /admin/profiles/1.xml
   def update
-    @admin_profile = Admin::Profile.find(params[:id])
+    @profile = Profile.find(params[:id])
 
     respond_to do |format|
       if @admin_profile.update_attributes(params[:admin_profile])
@@ -74,8 +86,8 @@ class Admin::ProfilesController < ApplicationController
   # DELETE /admin/profiles/1
   # DELETE /admin/profiles/1.xml
   def destroy
-    @admin_profile = Admin::Profile.find(params[:id])
-    @admin_profile.destroy
+    @profile = Profile.find(params[:id])
+    @profile.destroy
 
     respond_to do |format|
       format.html { redirect_to(admin_profiles_url) }

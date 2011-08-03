@@ -1,21 +1,53 @@
 <h1>Listing admin_profiles</h1>
 
-<table>
+<%= form_tag admin_profiles_path, :method => "get" do %>
+Restrict Search by <%= text_field_tag :term, @term %>
+<%= check_box_tag :find_empty, !(@find_empty.nil?) %>Empty
+<%= select_tag :field, options_for_select(Profile.column_names, @field), :include_blank => true %>
+<%= submit_tag "Search" %><br>
+<% end %>
+
+<%= form_tag admin_profiles_path, :method => "get", :id => "multi_status", :onsubmit => "grab_checkboxes()" do %>
+<table class="sortable">
   <tr>
+    <th></th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>District</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @admin_profiles.each do |admin_profile| %>
+<% @profiles.each do |profile| %>
   <tr>
-    <td><%= link_to 'Show', admin_profile %></td>
-    <td><%= link_to 'Edit', edit_admin_profile_path(admin_profile) %></td>
-    <td><%= link_to 'Destroy', admin_profile, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><input type="checkbox" name="status_sel[]" value="<%= profile.id %>"></td>
+    <td><%= profile.id %></td>
+    <td><%= "#{profile.first_name} #{profile.last_name}" %></td>
+    <td><%= profile.email %></td>
+    <td><%= profile.district %></td>
+    <td>Unscored</td>
+    <td><%= link_to 'Edit', edit_admin_profile_path(profile) %></td>
+    <td><%= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
-</table>
 
+  <tr>
+    <td colspan="8">
+      <%= image_tag "arrow_ltr.png" %>
+      <%= select_tag :status, options_for_select(Profile::STATUSES), :include_blank => true %>
+      <input type="submit" name="submit" value="Change Status">
+      <%= hidden_field_tag :status_array %>
+    </td>
+  </tr>
+
+</table>
+<% end %>
 <br />
+
+<script type="text/javascript">
+</script>
 
 <%= link_to 'New Profile', new_admin_profile_path %>
