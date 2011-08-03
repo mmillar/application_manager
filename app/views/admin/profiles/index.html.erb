@@ -1,0 +1,21 @@
+<h1>Listing admin_profiles</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_profiles.each do |admin_profile| %>
+  <tr>
+    <td><%= link_to 'Show', admin_profile %></td>
+    <td><%= link_to 'Edit', edit_admin_profile_path(admin_profile) %></td>
+    <td><%= link_to 'Destroy', admin_profile, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Profile', new_admin_profile_path %>
