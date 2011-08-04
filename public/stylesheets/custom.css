@@ -126,7 +126,7 @@ div#content .bottom h4 {
   font-family:Georgia;
   font-style: italic;
   color:#999;
-  margin-top:10px;
+  margin-top:20px;
   margin-bottom:3px;
 }
 
@@ -140,4 +140,30 @@ div.float_form {
 
 div.float_form .td {
   padding:5px;
+}
+
+.application .tr {
+}
+
+.application .td, #edit_profile .td {
+  padding-top: 10px;
+  vertical-align: top;
+}
+
+.application input[type=text], .application textarea  {
+  width: 100%;
+}
+
+.application textarea, #edit_profile textarea {
+  height: 120px;
+}
+
+.application .form_note {
+  color: #AAA;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.application .field-col {
+  padding-left: 10px;
 }
