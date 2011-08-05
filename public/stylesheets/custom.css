@@ -103,12 +103,12 @@ div#content .top {
 }
 
 div#content .top h3 {
-  font-size:24pt;
-  font-family:Georgia;
-  font-style: italic;
+  font-size:30pt;
+  font-family:Helvatica;
   color:#6ba5d0;
   margin-top:7px;
   margin-bottom:7px;
+  border-bottom:1px #EEE solid;
 }
 
 div#content .bottom {
@@ -129,7 +129,7 @@ div#content .bottom {
 
 div#content .bottom h2 {
   font-size:26pt;
-  font-family:Georgia;
+  font-family:Helvatica;
   font-style: italic;
   color:#6ba5d0;
   margin-top:7px;
@@ -189,14 +189,8 @@ div.float_form .td {
   width:100%;
 }
 
-.faq_button {
-  width: 40%;
-  display: table-cell;
-  text-align:center;
-}
-
 .apply_button {
-  width: 60%;
+  width: 100%;
   display: table-cell;
   text-align:center;
 }
