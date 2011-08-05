@@ -18,7 +18,6 @@ class Admin::ProfilesController < ApplicationController
         @profiles = Profile.where("#{params[:field]} = '#{params[:term]}'") if params[:field]
       end
     elsif params[:status_sel]
-      logger.debug "Imma here, bitch"
       params[:status_sel].each do |profile_id|
         profile = Profile.find profile_id
         ProfileMailer.acceptance_notification(profile).deliver 
