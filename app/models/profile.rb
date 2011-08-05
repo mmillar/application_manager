@@ -22,6 +22,11 @@ class Profile < ActiveRecord::Base
   def convert(field_to_convert, value_arr)
     self.send("#{field_to_convert}=", value_arr.reject(&:blank?).join(","))
   end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   private
   def email_matches_its_confirmation
     errors.add(:confirm_email, "doesn't match e-mail address") if id == nil && email != confirm_email
