@@ -26,6 +26,14 @@ ApplicationManager::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
+  config.action_mailer.smtp_settings = {                                                                                                                                                                                                 
+    :address        => 'mail.verto.ca',
+    :port           => 26,
+    :domain         => 'verto.ca',
+    :authentication => :login,
+    :user_name      => 'support@verto.ca',
+    :password       => 'MIKE8027'
+  }
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
