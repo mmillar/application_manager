@@ -5,7 +5,7 @@ class ProfileMailer < ActionMailer::Base
 
   def initial_application(profile)
     @profile = profile
-    mail(:to => "editor@themarknews.com", :subject => "Application received")
+    mail(:to => "spejic@verto.ca", :subject => "Application received")
   end
 
   def thank_you(profile)

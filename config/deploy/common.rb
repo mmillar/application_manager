@@ -1,4 +1,4 @@
-set :application, "torstardev.verto.ca"
+set :application, "torstar.verto.ca"
 
 # deploying users must be in deployers group
 before 'deploy:update_code', 'config_mgmt:permissions'

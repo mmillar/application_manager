@@ -15,8 +15,8 @@ set :rvm_ruby_string, "1.9.2@application_manager"
 
 default_run_options[:pty] = true
 
-role :app, "server1.verto.ca"
-role :web, "server1.verto.ca"
+role :app, "torstar.verto.ca"
+role :web, "torstar.verto.ca"
 
 namespace :deploy do
   desc 'Restarting Phusion Passenger.'
