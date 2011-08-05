@@ -1,13 +1,17 @@
 <h1>Editing Profile</h1>
 
 <div class="float_form">
-<%= render 'admin/reviews/form', :review => (@profile.review)? @profile.review : Review.create!(:profile_id => @profile.id) %>
+  <%= render 'admin/reviews/form', :review => @review %>
 </div>
 
 <div style="width:60%;margin:0px;">
-<%= form_for [:admin,@profile] do |f| %>
-<%= render 'profiles/form', :f => f %>
-<% end %>
+  <%= form_for [:admin,@profile] do |f| %>
+    <%= render 'profiles/form', :f => f %>
+    <div style="width:100%;text-align:center;">
+      <br>
+      <%= f.submit "Update", :style => "font-size:2em" %>
+    </div>
+  <% end %>
 </div>
 
 <%= link_to 'Back', admin_profiles_path %>

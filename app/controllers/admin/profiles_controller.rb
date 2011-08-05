@@ -2,11 +2,9 @@ class Admin::ProfilesController < ApplicationController
   before_filter :authenticate_user!
   layout "admin"
 
-  # GET /admin/profiles
-  # GET /admin/profiles.xml
   def index
     @profiles = Profile.all
-    if params[:find_empty] && 
+    if params[:find_empty] 
       @find_empty = params[:find_empty]
       @profiles = Profile.where("#{params[:field]} is null OR #{params[:field]} = ''") if params[:field]
     elsif params[:term] && !params[:term].blank?
@@ -19,6 +17,12 @@ class Admin::ProfilesController < ApplicationController
       else
         @profiles = Profile.where("#{params[:field]} = '#{params[:term]}'") if params[:field]
       end
+    elsif params[:status_sel]
+      logger.debug "Imma here, bitch"
+      params[:status_sel].each do |profile_id|
+        profile = Profile.find profile_id
+        ProfileMailer.acceptance_notification(profile).deliver 
+      end
     else
       @profiles = Profile.all
     end
@@ -30,8 +34,6 @@ class Admin::ProfilesController < ApplicationController
     end
   end
 
-  # GET /admin/profiles/1
-  # GET /admin/profiles/1.xml
   def show
     @profile = Profile.find(params[:id])
 
@@ -40,10 +42,9 @@ class Admin::ProfilesController < ApplicationController
     end
   end
 
-  # GET /admin/profiles/new
-  # GET /admin/profiles/new.xml
   def new
     @profile = Profile.new
+    @review = @proview.review.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,10 +54,9 @@ class Admin::ProfilesController < ApplicationController
   # GET /admin/profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
+    @review = (@profile.review)? @profile.review : Review.create!(:profile_id => @profile.id)
   end
 
-  # POST /admin/profiles
-  # POST /admin/profiles.xml
   def create
     @profile = Profile.new(params[:profile])
 
@@ -69,8 +69,6 @@ class Admin::ProfilesController < ApplicationController
     end
   end
 
-  # PUT /admin/profiles/1
-  # PUT /admin/profiles/1.xml
   def update
     @profile = Profile.find(params[:id])
 
@@ -83,8 +81,6 @@ class Admin::ProfilesController < ApplicationController
     end
   end
 
-  # DELETE /admin/profiles/1
-  # DELETE /admin/profiles/1.xml
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy
