@@ -92,25 +92,19 @@
       <div class="form_note">Select the three issues that you think will be the most important to your district during this election.</div>
       </div>
       <div class="td field-col" style="width:65%">
-      <%= f.select :key_issue_1, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? @profile.key_issue_1 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_1')"} %>
-      <div id="key_issue_1_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_1_other", @profile.key_issue_1, :style => "width:50%" %></div>
+        <div>
+          <%= f.select :key_issue_1, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? @profile.key_issue_1 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_1')"} %>
+          <div id="key_issue_1_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_1_other", @profile.key_issue_1, :style => "width:50%" %></div>
+       </div>
+        <div>
+          <%= f.select :key_issue_2, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? @profile.key_issue_2 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_2')"} %>
+          <div id="key_issue_2_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_2_other" , @profile.key_issue_2, :style => "width:50%" %></div>
+      </div>
+      <div>
+        <%= f.select :key_issue_3, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? @profile.key_issue_3 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_3')"} %>
+        <div id="key_issue_3_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_3_other" , @profile.key_issue_3, :style => "width:50%" %></div>
       </div>
     </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.select :key_issue_2, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? @profile.key_issue_2 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_2')"} %>
-      <div id="key_issue_2_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_2_other" , @profile.key_issue_2, :style => "width:50%" %></div>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.select :key_issue_3, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? @profile.key_issue_3 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_3')"} %>
-      <div id="key_issue_3_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_3_other" , @profile.key_issue_3, :style => "width:50%" %></div>
-      </div>
     </div>
     <div class="tr" style="width:100%">
       <div class="td">
