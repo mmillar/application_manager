@@ -37,7 +37,9 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(params[:profile])
     @profile.convert("media_formats", params[:profile].delete(:media_formats))
     @profile.convert("equipment_access", params[:profile].delete(:equipment_access))
-
+    
+    check_key_issues(@profile, params)
+    
     respond_to do |format|
       if @profile.save
         Review.create!(:profile_id => @profile.id)
@@ -56,6 +58,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @districts = ["Toronto", "Vaughan"]
     @key_issues = ["Politics", "Technology", "Business", "Arts"]
+    
+    check_key_issues(@profile, params)
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
@@ -77,4 +81,20 @@ class ProfilesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+    def check_key_issues(profile, params)
+      #Check Key Issues other field
+      if profile.key_issue_1 == "Other"
+        profile.key_issue_1 = params["key_issue_1_other"]
+      end
+      if profile.key_issue_2 == "Other"
+        profile.key_issue_2 = params["key_issue_2_other"]
+      end
+      if profile.key_issue_3 == "Other"
+        profile.key_issue_3 = params["key_issue_3_other"]
+      end
+    end
+
 end

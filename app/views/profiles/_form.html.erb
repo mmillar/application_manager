@@ -46,7 +46,7 @@
       <div class="form_note">Select the district you want to cover.</div>
       </div>
       <div class="td field-col" style="width:65%">
-      <%= f.select :district, options_for_select(Profile::DISTRICTS), :include_blank => true %>
+      <%= f.select :district, options_for_select(Profile::DISTRICTS, :selected => @profile.district), {:include_blank => true}, {} %>
       </div>
     </div>
     <div class="tr" style="width:100%">
@@ -123,7 +123,8 @@
       <%= f.label :key_issue_1, "Key Issue #1" %>
       </div>
       <div class="td field-col" style="width:65%">
-      <%= f.select :key_issue_1, options_for_select(Profile::ISSUES), :include_blank => true %>
+      <%= f.select :key_issue_1, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? @profile.key_issue_1 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_1')"} %>
+      <div id="key_issue_1_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_1_other", @profile.key_issue_1, :style => "width:50%" %></div>
       </div>
     </div>
     <div class="tr" style="width:100%">
@@ -131,7 +132,8 @@
       <%= f.label :key_issue_2, "Key Issue #2" %>
       </div>
       <div class="td field-col" style="width:65%">
-      <%= f.select :key_issue_2, options_for_select(Profile::ISSUES), :include_blank => true %>
+      <%= f.select :key_issue_2, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? @profile.key_issue_2 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_2')"} %>
+      <div id="key_issue_2_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_2_other" , @profile.key_issue_2, :style => "width:50%" %></div>
       </div>
     </div>
     <div class="tr" style="width:100%">
@@ -139,7 +141,8 @@
       <%= f.label :key_issue_3, "Key Issue #3" %>
       </div>
       <div class="td field-col" style="width:65%">
-      <%= f.select :key_issue_3, options_for_select(Profile::ISSUES), :include_blank => true %>
+      <%= f.select :key_issue_3, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? @profile.key_issue_3 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_3')"} %>
+      <div id="key_issue_3_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_3_other" , @profile.key_issue_3, :style => "width:50%" %></div>
       </div>
     </div>
     <div class="tr" style="width:100%">
@@ -197,4 +200,13 @@
     <p>REVIEW APPLICATION NOW. YOU CANNOT MAKE ANY CHANGES ONCE YOU SUBMIT.</p>
     <%= f.submit "Submit Application", :style => "font-size:2em" %>
   </div>
+  <script type="text/javascript">
+    function check_other(source) {
+      if($("#profile_"+source).val() == "Other") {
+        $("#"+source+"_other_field").show();
+      } else {
+        $("#"+source+"_other_field").hide();
+      }
+    }
+  </script>
 
