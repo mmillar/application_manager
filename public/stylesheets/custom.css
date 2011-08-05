@@ -200,3 +200,7 @@ div.float_form .td {
   display: table-cell;
   text-align:center;
 }
+
+div.faq ul { list-style-type: none; }
+
+div.faq p { text-indent: 0.5em; }
