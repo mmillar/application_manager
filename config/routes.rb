@@ -7,6 +7,7 @@ ApplicationManager::Application.routes.draw do
 
   match "faq", :to => "pages#faq"
   match "terms", :to => "pages#terms"
+  match "apply", :to => "pages#apply_front"
 
   root :to => "pages#welcome"
   

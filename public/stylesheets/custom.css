@@ -32,21 +32,36 @@ a {
 }
 
 #logo {
-  font-family: Georgia;
-  font-style: italic;
-  color: white;
-  font-size: 30pt;
+  color:#f3ba2d;
+  font-size:28pt;
+  font-family: Arial;
+  font-weight:bold;
+  line-height:37px;
+  height:90px;
 }
 
 #navbar {
   position: absolute;
   right: 0px;
-  top: 50px;
+  top: 40px;
   font-family: Arial;
   background-color: #f8f8f8;
   color: #444;
   font-weight: bold;
   font-size: 0.8em;
+}
+
+#social_media {
+  position: absolute;
+  right: -20px;
+  top: 0px;
+  font-family: Arial;
+  width: 150px;
+  text-align:right;
+}
+
+.addthis_toolbox addthis_default_style addthis_32x32_style {
+  text-align:right;
 }
 
 #navbar .td{
@@ -166,4 +181,22 @@ div.float_form .td {
 
 .application .field-col {
   padding-left: 10px;
+}
+
+.nav_buttons {
+  margin-top:20px;
+  display:table;
+  width:100%;
+}
+
+.faq_button {
+  width: 40%;
+  display: table-cell;
+  text-align:center;
+}
+
+.apply_button {
+  width: 60%;
+  display: table-cell;
+  text-align:center;
 }

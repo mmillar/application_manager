@@ -9,6 +9,26 @@
 </head>
 <body>
 <div id="main">
+  <div id="social_media">
+    <div class="addthis_toolbox" addthis:url="http://torstar.verto.ca">
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+      <a class="addthis_button_preferred_1"></a>
+      <a class="addthis_button_preferred_2"></a>
+      <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=mojothang"></script>
+    <script type="text/javascript">
+      var addthis_share = {
+        templates: {
+          twitter: 'Apply to be a Toronto Star "Community Correspondent" for the 2011 Ontario election! {{url}}',
+          facebook: 'Apply to be a Toronto Star "Community Correspondent" for the 2011 Ontario election! {{url}}'
+        }
+      }
+    </script>
+    <!-- AddThis Button END -->
+    </div>
+  </div>
   <div id="navbar" class="table corner-all">
     <div class="tr">
       <div class="td">
@@ -26,7 +46,12 @@
     </div>
   </div>
   <div id="logo">
-    Logo<br>Placeholder
+    <div style="display:inline-block">
+      <%= image_tag "speak_your_mind_logo.png", :width => "60px" %>
+    </div>
+    <div style="width:250px;display:inline-block;margin-left:10pt;">
+      Speak Your Mind
+    </div>
   </div>
 
   <div id="content">

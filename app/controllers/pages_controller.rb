@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def faq
   end
+  
+  def apply_front
+  end
 end
