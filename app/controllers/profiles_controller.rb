@@ -56,9 +56,6 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    @districts = ["Toronto", "Vaughan"]
-    @key_issues = ["Politics", "Technology", "Business", "Arts"]
-    
     check_key_issues(@profile, params)
 
     respond_to do |format|

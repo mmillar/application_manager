@@ -7,6 +7,7 @@ class Profile < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :email, :phone, :district, :qualifications, :experience, :facebook_url, :facebook_no_of_friends, :twitter_url, :twitter_no_of_followers, :content_sample, :editorial_ideas, :key_issue_1, :key_issue_2, :key_issue_3, :conflict_of_interest, :other_comments, :accepted_tos
 
   validates_numericality_of :facebook_no_of_friends, :twitter_no_of_followers
+  validates_format_of :phone, :with => /\d*\-*\(*\d{3}\-*\)*\s*\d{3}\-*\d{4}\s?(x|ext\.\s)?\d{0,5}/
   validates_email_format_of :email
   validates_format_of :facebook_url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
   validates_format_of :twitter_url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
