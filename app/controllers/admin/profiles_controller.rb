@@ -22,6 +22,7 @@ class Admin::ProfilesController < ApplicationController
         profile = Profile.find profile_id
         ProfileMailer.acceptance_notification(profile).deliver 
       end
+      redirect_to :action => 'index' and return
     else
       @profiles = Profile.all
     end
