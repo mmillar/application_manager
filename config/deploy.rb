@@ -17,6 +17,7 @@ default_run_options[:pty] = true
 
 role :app, "torstar.verto.ca"
 role :web, "torstar.verto.ca"
+role :db, "torstar.verto.ca"
 
 namespace :deploy do
   desc 'Restarting Phusion Passenger.'
