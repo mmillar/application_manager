@@ -88,6 +88,8 @@ div#content {
   font-family: helvetica, arial, sans-serif;
 }
 
+div#content p, div#content ul { font-size: 90%; }
+
 div#content .top {
   margin-top: 15px;
   padding: 10px;
@@ -107,7 +109,7 @@ div#content .top {
 }
 
 div#content .top h3 {
-  font-size:30pt;
+  font-size:24pt;
   font-family: helvetica, arial;
   color:#6ba5d0;
   margin-top:7px;
@@ -198,6 +200,8 @@ div.float_form .td {
 }
 
 div.faq ul { list-style-type: none; }
+
+div.faq blockquote { color: #3f3f3f; }
 
 div#welcome p a { color: #999; }
 div#welcome p a:hover { text-decoration: underline;}
