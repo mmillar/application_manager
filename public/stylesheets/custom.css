@@ -34,7 +34,7 @@ a {
 #logo {
   color:#f3ba2d;
   font-size:28pt;
-  font-family: Helvatica Arial;
+  font-family: helvetica arial;
   font-weight:bold;
   line-height:37px;
   height:80px;
@@ -44,7 +44,7 @@ a {
   position: absolute;
   right: 0px;
   top: 40px;
-  font-family: Helvatica Arial;
+  font-family: helvetica arial;
   background-color: #f8f8f8;
   color: #444;
   font-weight: bold;
@@ -55,7 +55,7 @@ a {
   position: absolute;
   right: -20px;
   top: 0px;
-  font-family: Helvatica Arial;
+  font-family: helvetica arial;
   width: 150px;
   text-align:right;
 }
@@ -104,7 +104,7 @@ div#content .top {
 
 div#content .top h3 {
   font-size:30pt;
-  font-family: Helvatica Arial;
+  font-family: helvetica arial;
   color:#6ba5d0;
   margin-top:7px;
   margin-bottom:7px;
@@ -129,7 +129,7 @@ div#content .bottom {
 
 div#content .bottom h2 {
   font-size:26pt;
-  font-family:Helvatica;
+  font-family:helvetica;
   color:#6ba5d0;
   margin-top:7px;
   margin-bottom:7px;
@@ -137,7 +137,7 @@ div#content .bottom h2 {
 
 div#content .bottom h4 {
   font-size:14pt;
-  font-family: Helvatica Arial;
+  font-family: helvetica arial;
   color:#999;
   margin-top:20px;
   margin-bottom:3px;
