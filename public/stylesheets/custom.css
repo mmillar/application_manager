@@ -31,10 +31,10 @@ a {
   text-decoration: none;
 }
 
-#logo {
+div#logo, div#logo a {
   color:#f3ba2d;
   font-size:28pt;
-  font-family: helvetica arial;
+  font-family: helvetica, arial;
   font-weight:bold;
   line-height:37px;
   height:80px;
@@ -44,7 +44,7 @@ a {
   position: absolute;
   right: 0px;
   top: 40px;
-  font-family: helvetica arial;
+  font-family: helvetica, arial;
   background-color: #f8f8f8;
   color: #444;
   font-weight: bold;
@@ -55,7 +55,7 @@ a {
   position: absolute;
   right: -20px;
   top: 0px;
-  font-family: helvetica arial;
+  font-family: helvetica, arial;
   width: 150px;
   text-align:right;
 }
@@ -84,6 +84,10 @@ div.td{
   display: table-cell;
 }
 
+div#content {
+  font-family: helvetica, arial, sans-serif;
+}
+
 div#content .top {
   margin-top: 15px;
   padding: 10px;
@@ -104,7 +108,7 @@ div#content .top {
 
 div#content .top h3 {
   font-size:30pt;
-  font-family: helvetica arial;
+  font-family: helvetica, arial;
   color:#6ba5d0;
   margin-top:7px;
   margin-bottom:7px;
@@ -137,7 +141,7 @@ div#content .bottom h2 {
 
 div#content .bottom h4 {
   font-size:14pt;
-  font-family: helvetica arial;
+  font-family: helvetica, arial;
   color:#999;
   margin-top:20px;
   margin-bottom:3px;
