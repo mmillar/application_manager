@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
   
   def status
     if self.qualified.nil?
-      return "Unscored"
+      return "Unreviewed"
     elsif !self.qualified
       return "Rejected"
     elsif self.bio_edited && self.photo_edited
