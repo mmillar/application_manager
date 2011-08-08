@@ -46,12 +46,14 @@
     </div>
   </div>
   <div id="logo">
-    <div style="display:inline-block">
-      <%= image_tag "speak_your_mind_logo.png", :width => "60px" %>
-    </div>
-    <div style="width:250px;display:inline-block;margin-left:10pt;">
-      Speak Your Mind
-    </div>
+    <% link_to root_path do %>
+      <div style="float:left">
+        <%= image_tag "speak_your_mind_logo.png", :width => "60px" %>
+      </div>
+      <p style="width:250px;float:left;margin-left:10pt;margin-top:-5px;color:#f3ba2d;">
+        Speak Your Mind
+      </p>
+    <% end %>
   </div>
 
   <div id="content">
