@@ -88,7 +88,7 @@ div#content {
   font-family: helvetica, arial, sans-serif;
 }
 
-div#content p, div#content ul { font-size: 90%; }
+div#content p, div#content .td { font-size: 90%; }
 
 div#content .top {
   margin-top: 15px;
