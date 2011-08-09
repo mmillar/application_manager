@@ -28,9 +28,14 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find(params[:id])
-    @profile.confirm_email = @profile.email
-    @profile.media_formats = @profile.media_formats.split(",")
-    @profile.equipment_access = @profile.equipment_access.split(",")
+
+    if params[:token] && params[:token] == @profile.token
+      @profile.confirm_email = @profile.email
+      @profile.media_formats = @profile.media_formats.split(",")
+      @profile.equipment_access = @profile.equipment_access.split(",")
+    else
+      render 'public/404.html' and return
+    end
   end
 
   def create
@@ -56,9 +61,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     check_key_issues(@profile, params)
-   logger.debug "What are we getting from client: #{params[:profile][:picture]}" 
     @profile.picture = params[:profile][:picture]
-    logger.debug "Is it set? #{@profile.picture}"
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

@@ -13,7 +13,7 @@ class Profile < ActiveRecord::Base
   validates_email_format_of :email
   validates_format_of :facebook_url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
   validates_format_of :twitter_url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
-  validate :email_matches_its_confirmation
+  validate :email_matches_its_confirmation, :bio_is_present, :picture_is_present
   
   DISTRICTS = ["Ajax-Pickering","Algoma-Manitoulin","Ancaster-Dundas-Flamborough-Westdale","Barrie","Beaches-East York","Bramalea-Gore-Malton","Brampton-Springdale","Brampton West","Brant","Bruce-Grey-Owen Sound","Burlington","Cambridge","Carleton-Mississippi Mills","Chatham-Kent-Essex","Davenport","Don Valley East","Don Valley West","Dufferin-Caledon","Durham","Eglinton-Lawrence","Elgin-Middlesex-London","Essex","Etobicoke-Centre","Etobicoke-Lakeshore","Etobicoke-North","Glengarry-Prescott-Russell","Guelph","Haldimand-Norfolk","Haliburton-Kawartha Lakes-Brock","Halton","Hamilton-Centre","Hamilton-East-Stoney Creek","Hamilton Mountain","Huron-Bruce","Kenora-Rainy River","Kingston and the Islands","Kitchener-Centre","Kitchener-Conestoga","Kitchener-Waterloo","Lambton-Kent-Middlesex","Lanark-Frontenac-Lennox and Addington","Leeds-Grenville","London-Fanshawe","London North Centre","London West","Markham-Unionville","Mississauga-Brampton South","Mississauga East-Cooksville","Mississauga-Erindale","Mississauga South","Mississauga-Streetsville","Nepean-Carleton","Newmarket-Aurora","Niagara Falls","Niagara West-Glanbrook","Nickel Belt","Nipissing","Northumberland-Quinte West","Oak Ridges-Markham","Oakville","Oshawa","Ottawa-Centre","Ottawa-Orleans","Ottawa South","Ottawa-Vanier","Ottawa West-Nepean","Oxford","Parkdale-High Park","Parry Sound-Muskoka","Perth-Wellington","Peterborough","Pickering-Scarborough East","Prince Edward-Hastings","Renfrew-Nipissing-Pembroke","Richmond Hill","St. Catharines","St. Paul's","Sarnia-Lambton","Sault Ste. Marie","Scarborough-Agincourt","Scarborough-Centre","Scarborough-Guildwood","Scarborough-Rouge River","Scarborough Southwest","Simcoe-Grey","Simcoe North","Stormont-Dundas-South Glengarry","Sudbury","Thornhill","Thunder Bay-Atikokan","Thunder Bay-Superior North","Timiskaming-Cochrane","Timmins- James Bay","Toronto-Centre","Toronto-Danforth","Trinity-Spadina","Vaughan","Welland","Wellington-Halton Hills","Whitby-Oshawa","Willowdale","Windsor-Tecumseh","Windsor West","York-Centre","York-Simcoe","York South-Weston","York West"]
   
@@ -32,6 +32,14 @@ class Profile < ActiveRecord::Base
   private
   def email_matches_its_confirmation
     errors.add(:confirm_email, "doesn't match e-mail address") if id == nil && email != confirm_email
+  end
+
+  def bio_is_present
+    errors.add(:bio, "can't be blank") if bio.blank? && !new_record?
+  end
+
+  def picture_is_present
+    errors.add(:picture, "must be uploaded") if picture.blank? && !new_record?
   end
 
   def generate_token
