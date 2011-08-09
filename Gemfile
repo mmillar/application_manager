@@ -9,6 +9,7 @@ gem 'capistrano-ext'
 gem 'message_block'
 gem 'validates_email_format_of'
 gem 'devise', '1.1.rc0'
+gem 'spreadsheet', '~>0.6.5.7'
 
 # Use unicorn as the web server
 # gem 'unicorn'

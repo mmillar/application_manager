@@ -1,10 +1,10 @@
 class ProfileMailer < ActionMailer::Base
   #TODO change this to whatever suits the project
-  default :from => "support@verto.ca"
+  default :from => "\"Application Support\" <help@themarknews.com>"
 
   def initial_application(profile)
     @profile = profile
-    mail(:to => "spejic@verto.ca", :subject => "Application received")
+    mail(:to => "help@themarknews.com", :subject => "Application received")
   end
 
   def thank_you(profile)
