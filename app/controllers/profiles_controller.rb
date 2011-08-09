@@ -28,16 +28,20 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find(params[:id])
-    @profile.confirm_email = @profile.email
-    @profile.media_formats = @profile.media_formats.split(",")
-    @profile.equipment_access = @profile.equipment_access.split(",")
+
+    if params[:token] && params[:token] == @profile.token
+      @profile.confirm_email = @profile.email
+      @profile.media_formats = @profile.media_formats.split(",")
+      @profile.equipment_access = @profile.equipment_access.split(",")
+    else
+      render 'public/404.html' and return
+    end
   end
 
   def create
     @profile = Profile.new(params[:profile])
     @profile.convert("media_formats", params[:profile].delete(:media_formats))
     @profile.convert("equipment_access", params[:profile].delete(:equipment_access))
-    
     check_key_issues(@profile, params)
     
     respond_to do |format|
@@ -57,6 +61,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     check_key_issues(@profile, params)
+    @profile.picture = params[:profile][:picture]
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

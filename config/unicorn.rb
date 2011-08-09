@@ -1,3 +1,5 @@
+# unicorn_rails -c /data/github/current/config/unicorn.rb -E production -D
+
 rails_env = ENV['RAILS_ENV'] || 'production'
 
 # 16 workers and 1 master
@@ -11,7 +13,7 @@ preload_app true
 timeout 30
 
 # Listen on a Unix data socket
-#listen 'tmp/sockets/unicorn.sock', :backlog => 2048
+#listen '/data/github/current/tmp/sockets/unicorn.sock', :backlog => 2048
 
 
 ##
@@ -59,11 +61,11 @@ after_fork do |server, worker|
 
   ##
   # Unicorn master is started as root, which is fine, but let's
-  # drop the workers to git:git
+  # drop the workers to srdjan:srdjan
 
   begin
     uid, gid = Process.euid, Process.egid
-    user, group = 'git', 'git'
+    user, group = 'srdjan', 'srdjan'
     target_uid = Etc.getpwnam(user).uid
     target_gid = Etc.getgrnam(group).gid
     worker.tmp.chown(target_uid, target_gid)
