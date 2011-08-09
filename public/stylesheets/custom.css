@@ -84,6 +84,13 @@ div.td{
   display: table-cell;
 }
 
+div.application div.tr { width: 100%; }
+
+div.application div.td { width: 65%; }
+
+div.application div.td.left { width: 15%;}
+div.application div.td.right { width: 45%;}
+
 div#content {
   font-family: helvetica, arial, sans-serif;
 }

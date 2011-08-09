@@ -39,6 +39,8 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
+    carrierwave (0.5.6)
+      activesupport (~> 3.0)
     columnize (0.3.4)
     devise (1.1.rc0)
       warden (~> 0.10.3)
@@ -114,6 +116,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   capistrano-ext
+  carrierwave
   devise (= 1.1.rc0)
   jquery-rails
   message_block

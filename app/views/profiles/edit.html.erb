@@ -1,6 +1,12 @@
-<h1>Editing profile</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<div class="top" style="text-align:center;">
+  <h3>Community Correspondent Acceptance Confirmation</h3>
+</div>
+<div class="bottom application">
+  <p>Please fill out your bio and upload a recent photo of yourself</p>
+  <%= form_for @profile, :html => {:multipart => true} do |f| %>
+    <%= render 'form', :f => f, :edit => true %>
+    <div style="width:100%;text-align:center;">
+      <%= f.submit "Confirm Acceptance", :style => "font-size:2em" %>
+    </div>
+  <% end %>
+</div>

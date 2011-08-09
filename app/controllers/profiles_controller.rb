@@ -37,7 +37,6 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(params[:profile])
     @profile.convert("media_formats", params[:profile].delete(:media_formats))
     @profile.convert("equipment_access", params[:profile].delete(:equipment_access))
-    
     check_key_issues(@profile, params)
     
     respond_to do |format|
@@ -57,6 +56,9 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     check_key_issues(@profile, params)
+   logger.debug "What are we getting from client: #{params[:profile][:picture]}" 
+    @profile.picture = params[:profile][:picture]
+    logger.debug "Is it set? #{@profile.picture}"
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

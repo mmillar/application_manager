@@ -1,186 +1,205 @@
   <%= message_block :on => :profile %>
   <div class="actions table" style="width:100%">
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :first_name, "First Name" %>
+    <% if edit %>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :bio, "Bio" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_area :bio %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :first_name %>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :picture, "Photo" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.file_field :picture %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :last_name, "Last Name" %>
+    <% else %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :first_name, "First Name" %>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :first_name %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :last_name %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :last_name, "Last Name" %>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :last_name %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :email, "E-mail Address" %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :email, "E-mail Address" %>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :email %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :email %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :confirm_email, "Confirm E-mail Address" %>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :confirm_email %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :confirm_email, "Confirm E-mail Address" %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :phone, "Phone Number" %>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :phone %>
+        <div class="form_note">Example: 555-555-5555</div>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :confirm_email %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :district, "District" %><br>
+        <div class="form_note">Select the district you want to cover. To see which district you are in, click <%= link_to "here", "http://fyed.elections.on.ca/fyed/en/form_page_en.jsp", :target => "_blank" %>.</div>
+        </div>
+        <div class="td field-col">
+        <%= f.select :district, options_for_select(Profile::DISTRICTS, :selected => @profile.district), {:include_blank => true}, {} %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :phone, "Phone Number" %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :experience, "Writing Experience" %>
+        <div class="form_note">List your professional or non-professional writing experience and any knowledge of online blogging platforms.</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_area :experience %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :phone %>
-      <div class="form_note">Example: 555-555-5555</div>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :content_sample, "Content Samples" %>
+        <div class="form_note">Post links to works published online, or post full samples in text box. Unpublished work accepted.</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_area :content_sample %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :district, "District" %><br>
-      <div class="form_note">Select the district you want to cover. To see which district you are in, click <%= link_to "here", "http://fyed.elections.on.ca/fyed/en/form_page_en.jsp", :target => "_blank" %>.</div>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :editorial_ideas, "Editorial Ideas" %>
+        <div class="form_note">Propose posts you could write. Include the issue, the angle, and why it would appeal to the audience.</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_area :editorial_ideas %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.select :district, options_for_select(Profile::DISTRICTS, :selected => @profile.district), {:include_blank => true}, {} %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :experience, "Writing Experience" %>
-      <div class="form_note">List your professional or non-professional writing experience and any knowledge of online blogging platforms.</div>
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_area :experience %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :content_sample, "Content Samples" %>
-      <div class="form_note">Post links to works published online, or post full samples in text box. Unpublished work accepted.</div>
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_area :content_sample %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :editorial_ideas, "Editorial Ideas" %>
-      <div class="form_note">Propose posts you could write. Include the issue, the angle, and why it would appeal to the audience.</div>
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_area :editorial_ideas %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :key_issue_1, "Key Issues" %>
-      <div class="form_note">Select the three issues that you think will be the most important to your district during this election.</div>
-      </div>
-      <div class="td field-col" style="width:65%">
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :key_issue_1, "Key Issues" %>
+        <div class="form_note">Select the three issues that you think will be the most important to your district during this election.</div>
+        </div>
+        <div class="td field-col">
+          <div>
+            <%= f.select :key_issue_1, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? @profile.key_issue_1 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_1')"} %>
+            <div id="key_issue_1_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_1_other", @profile.key_issue_1, :style => "width:50%" %></div>
+         </div>
+          <div>
+            <%= f.select :key_issue_2, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? @profile.key_issue_2 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_2')"} %>
+            <div id="key_issue_2_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_2_other" , @profile.key_issue_2, :style => "width:50%" %></div>
+        </div>
         <div>
-          <%= f.select :key_issue_1, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? @profile.key_issue_1 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_1')"} %>
-          <div id="key_issue_1_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_1) || @profile.key_issue_1.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_1_other", @profile.key_issue_1, :style => "width:50%" %></div>
-       </div>
-        <div>
-          <%= f.select :key_issue_2, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? @profile.key_issue_2 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_2')"} %>
-          <div id="key_issue_2_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_2) || @profile.key_issue_2.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_2_other" , @profile.key_issue_2, :style => "width:50%" %></div>
+          <%= f.select :key_issue_3, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? @profile.key_issue_3 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_3')"} %>
+          <div id="key_issue_3_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_3_other" , @profile.key_issue_3, :style => "width:50%" %></div>
+        </div>
       </div>
-      <div>
-        <%= f.select :key_issue_3, options_for_select(Profile::ISSUES, :selected => (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? @profile.key_issue_3 : "Other" ), {:include_blank => true}, {:onchange => "check_other('key_issue_3')"} %>
-        <div id="key_issue_3_other_field"<%= (Profile::ISSUES.include?(@profile.key_issue_3) || @profile.key_issue_3.blank? )? " style='display:none'" : "" %>>Other: <%= text_field_tag "key_issue_3_other" , @profile.key_issue_3, :style => "width:50%" %></div>
       </div>
-    </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :media_formats, "Formats You Would Use" %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :media_formats, "Formats You Would Use" %>
+        </div>
+        <div class="td field-col">
+        <%= f.check_box :media_formats, {:multiple => true}, "Text", nil %>Text<br />
+        <%= f.check_box :media_formats, {:multiple => true}, "Video", nil %>Video<br />
+        <%= f.check_box :media_formats, {:multiple => true}, "Photos", nil %>Photos<br />
+        <%= f.check_box :media_formats, {:multiple => true}, "Audio", nil %>Audio
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.check_box :media_formats, {:multiple => true}, "Text", nil %>Text<br />
-      <%= f.check_box :media_formats, {:multiple => true}, "Video", nil %>Video<br />
-      <%= f.check_box :media_formats, {:multiple => true}, "Photos", nil %>Photos<br />
-      <%= f.check_box :media_formats, {:multiple => true}, "Audio", nil %>Audio
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :equipment_access, "Access to Equipment" %>
+        </div>
+        <div class="td field-col">
+        <%= f.check_box :equipment_access, {:multiple => true}, "Webcam", nil %>Webcam<br />
+        <%= f.check_box :equipment_access, {:multiple => true}, "Video Camera", nil %>Video Camera<br />
+        <%= f.check_box :equipment_access, {:multiple => true}, "Still Camera", nil %>Still Camera<br />
+        <%= f.check_box :equipment_access, {:multiple => true}, "iPhone", nil %>iPhone<br />
+        <%= f.check_box :equipment_access, {:multiple => true}, "Other Mobile", nil %>Other Smartphone Device
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :equipment_access, "Access to Equipment" %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :facebook_url, "Facebook Account URL" %>
+        <div class="form_note">Example: http://www.facebook.com/joesmith123</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :facebook_url %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.check_box :equipment_access, {:multiple => true}, "Webcam", nil %>Webcam<br />
-      <%= f.check_box :equipment_access, {:multiple => true}, "Video Camera", nil %>Video Camera<br />
-      <%= f.check_box :equipment_access, {:multiple => true}, "Still Camera", nil %>Still Camera<br />
-      <%= f.check_box :equipment_access, {:multiple => true}, "iPhone", nil %>iPhone<br />
-      <%= f.check_box :equipment_access, {:multiple => true}, "Other Mobile", nil %>Other Smartphone Device
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :facebook_no_of_friends, "Facebook # of friends" %>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :facebook_no_of_friends %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :facebook_url, "Facebook Account URL" %>
-      <div class="form_note">Example: http://www.facebook.com/joesmith123</div>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :twitter_url, "Twitter Account URL" %>
+        <div class="form_note">Example: http://www.twitter.com/joesmith123</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :twitter_url %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :facebook_url %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :twitter_no_of_followers, "Twitter # of followers" %>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :twitter_no_of_followers %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :facebook_no_of_friends, "Facebook # of friends" %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :personal_url, "Personal Website URL" %>
+        <div class="form_note">If you have a personal website or blog, please provide the link to it here.</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_field :personal_url %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :facebook_no_of_friends %>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :conflict_of_interest, "Declare Conflicts of Interest" %>
+        <div class="form_note">Conflicts of interest include current or past affiliations with a political party, advocacy, or interest group with a stake in the election.</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_area :conflict_of_interest %>
+        </div>
       </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :twitter_url, "Twitter Account URL" %>
-      <div class="form_note">Example: http://www.twitter.com/joesmith123</div>
+      <div class="tr" >
+        <div class="td">
+        <%= f.label :other_comments, "Additional Information" %>
+        <div class="form_note">If there is anything else that helps explain your qualification for this position, please let us know here.</div>
+        </div>
+        <div class="td field-col">
+        <%= f.text_area :other_comments %>
+        </div>
       </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :twitter_url %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :twitter_no_of_followers, "Twitter # of followers" %>
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :twitter_no_of_followers %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :personal_url, "Personal Website URL" %>
-      <div class="form_note">If you have a personal website or blog, please provide the link to it here.</div>
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_field :personal_url %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :conflict_of_interest, "Declare Conflicts of Interest" %>
-      <div class="form_note">Conflicts of interest include current or past affiliations with a political party, advocacy, or interest group with a stake in the election.</div>
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_area :conflict_of_interest %>
-      </div>
-    </div>
-    <div class="tr" style="width:100%">
-      <div class="td">
-      <%= f.label :other_comments, "Additional Information" %>
-      <div class="form_note">If there is anything else that helps explain your qualification for this position, please let us know here.</div>
-      </div>
-      <div class="td field-col" style="width:65%">
-      <%= f.text_area :other_comments %>
-      </div>
-    </div>
+    <% end %>
   </div>
   <script type="text/javascript">
     function check_other(source) {
