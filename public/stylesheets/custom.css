@@ -49,6 +49,7 @@ div#logo, div#logo a {
   color: #444;
   font-weight: bold;
   font-size: 0.8em;
+  width:230px;
 }
 
 #social_media {
@@ -83,6 +84,8 @@ div.tr {
 div.td{
   display: table-cell;
 }
+
+a img {border: none; }
 
 div.application div.tr { width: 100%; }
 
