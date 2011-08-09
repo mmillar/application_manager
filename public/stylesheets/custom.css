@@ -89,8 +89,6 @@ a img {border: none; }
 
 div.application div.tr { width: 100%; }
 
-div.application div.td { width: 65%; }
-
 div.application div.td.left { width: 15%;}
 div.application div.td.right { width: 45%;}
 
@@ -174,7 +172,7 @@ div.float_form .td {
 .application .tr {
 }
 
-.application .td, #edit_profile .td {
+.application .td, .edit_profile .td {
   padding-top: 10px;
   vertical-align: top;
 }
@@ -195,6 +193,7 @@ div.float_form .td {
 
 .application .field-col {
   padding-left: 10px;
+  width: 50%;
 }
 
 .nav_buttons {
