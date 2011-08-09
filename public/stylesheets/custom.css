@@ -67,6 +67,7 @@ div#logo, div#logo a {
 
 #navbar .td{
   padding: 15px;
+  float:left;
 }
 
 #navbar .left-border {
