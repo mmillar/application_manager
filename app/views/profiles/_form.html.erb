@@ -1,6 +1,6 @@
   <%= message_block :on => :profile %>
   <div class="actions table" style="width:100%">
-    <% if edit %>
+    <% if defined?(edit) %>
       <div class="tr">
         <div class="td left">
           <%= f.label :bio, "Bio" %>
@@ -199,6 +199,25 @@
         <%= f.text_area :other_comments %>
         </div>
       </div>
+      <% if defined?(admin) %>
+        <div class="tr">
+          <div class="td">
+            <%= f.label :bio, "Bio" %>
+          </div>
+          <div class="td field-col">
+            <%= f.text_area :bio %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td">
+            <%= f.label :picture, "Photo" %>
+          </div>
+          <div class="td field-col">
+            <%= image_tag f.object.picture_url.to_s %>
+            <%= f.file_field :picture %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <script type="text/javascript">

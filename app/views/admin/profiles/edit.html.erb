@@ -6,7 +6,7 @@
 
 <div style="width:60%;margin:0px;">
   <%= form_for [:admin,@profile] do |f| %>
-    <%= render 'profiles/form', :f => f, :edit => nil %>
+    <%= render 'profiles/form', :f => f, :admin => true %>
     <div style="width:100%;text-align:center;">
       <br>
       <%= f.submit "Update", :style => "font-size:2em" %>
