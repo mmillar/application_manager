@@ -1,7 +1,7 @@
 ApplicationManager::Application.routes.draw do
   devise_for :users
   
-  resources :profiles
+  resources :profiles, :except => [:index, :destroy]
 
   match "application", :to => "profiles#new"
 
