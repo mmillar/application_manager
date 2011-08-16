@@ -1,9 +1,9 @@
 class Profile < ActiveRecord::Base
-  attr_accessor :confirm_email
+  attr_accessor :confirm_email, :bypass
   before_create :generate_token
   
   has_one :review, :dependent => :destroy
-  attr_accessible :first_name, :last_name, :email, :phone, :district, :experience, :facebook_url, :facebook_no_of_friends, :twitter_url, :twitter_no_of_followers, :content_sample, :editorial_ideas, :key_issue_1, :key_issue_2, :key_issue_3, :media_formats, :equipment_access, :conflict_of_interest, :other_comments, :confirm_email, :bio, :picture
+  attr_accessible :first_name, :last_name, :email, :phone, :district, :experience, :facebook_url, :facebook_no_of_friends, :twitter_url, :twitter_no_of_followers, :content_sample, :editorial_ideas, :key_issue_1, :key_issue_2, :key_issue_3, :media_formats, :equipment_access, :conflict_of_interest, :other_comments, :confirm_email, :bio, :picture, :bypass
 
   mount_uploader :picture, PictureUploader
   validates_presence_of :first_name, :last_name, :email, :phone, :district, :experience, :facebook_url, :facebook_no_of_friends, :twitter_url, :twitter_no_of_followers, :content_sample, :editorial_ideas, :key_issue_1, :key_issue_2, :key_issue_3, :conflict_of_interest, :other_comments
@@ -35,11 +35,11 @@ class Profile < ActiveRecord::Base
   end
 
   def bio_is_present
-    errors.add(:bio, "can't be blank") if bio.blank? && !new_record?
+    errors.add(:bio, "can't be blank") if bio.blank? && !new_record? && !bypass
   end
 
   def picture_is_present
-    errors.add(:picture, "must be uploaded") if picture.blank? && !new_record?
+    errors.add(:picture, "must be uploaded") if picture.blank? && !new_record? && !bypass
   end
 
   def generate_token

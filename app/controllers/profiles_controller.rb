@@ -60,17 +60,22 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    check_key_issues(@profile, params)
-    @profile.picture = params[:profile][:picture]
+    if params[:token]
+      check_key_issues(@profile, params)
+      @profile.picture = params[:profile][:picture] if params[:profile]
+      @profile.bypass = true if params[:bypass]
 
-    respond_to do |format|
-      if @profile.update_attributes(params[:profile])
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @profile.update_attributes(params[:profile])
+          format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      render 'public/404.html' and return
     end
   end
 

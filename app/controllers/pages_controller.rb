@@ -1,13 +1,9 @@
 class PagesController < ApplicationController
-  def welcome
-  end
-
-  def terms
-  end
-
-  def faq
-  end
-  
-  def apply_front
+  def confirm
+    if params[:token] && @profile = Profile.find_by_token(params[:token])
+      @profile
+    else
+      render 'public/404.html' and return
+    end
   end
 end
