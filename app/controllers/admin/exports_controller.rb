@@ -16,10 +16,11 @@ class Admin::ExportsController < ApplicationController
     
     cur_time = Time.now.to_i.to_s
     
-    workbook.write 'tmp/reports/'+cur_time+'-profile-export.xls'
+    blob = StringIO.new("")
+    workbook.write blob
     
     respond_to do |format|
-      format.xls { send_file 'tmp/reports/'+cur_time+'-profile-export.xls', :type => "application/vnd.ms-excel" }
+      format.xls { send_data blob.string , :filename => "profiles_export_"+cur_time+".xls", :type => "application/vnd.ms-excel" }
     end
   end
   
@@ -36,13 +37,13 @@ class Admin::ExportsController < ApplicationController
       tmp_hash["Email"] = profile.email
       tmp_hash["Phone"] = profile.phone
       tmp_hash["District"] = profile.district
-      tmp_hash["Qualifications"] = profile.qualifications
+      #tmp_hash["Qualifications"] = profile.qualifications
       tmp_hash["Experience"] = profile.experience
       tmp_hash["Facebook URL"] = profile.facebook_url
       tmp_hash["Friends"] = profile.facebook_no_of_friends
       tmp_hash["Twitter URL"] = profile.twitter_url
       tmp_hash["Followers"] = profile.twitter_no_of_followers
-      tmp_hash["Content Sample"] = profile.content_sample
+      tmp_hash["Content Sample"] = profile.content_sample[0,1000]
       tmp_hash["Editorial Ideas"] = profile.editorial_ideas
       tmp_hash["Key Issue 1"] = profile.key_issue_1
       tmp_hash["Key Issue 2"] = profile.key_issue_2
