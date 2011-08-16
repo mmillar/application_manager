@@ -9,6 +9,7 @@ namespace :config_mgmt do
     run "#{sudo} chgrp -R deploy #{shared_path}/*"
     run "#{sudo} chmod -R g+w #{shared_path}/*"
     run "#{sudo} chmod -R +r #{shared_path}/log/"
+    run "#{sudo} cp -a #{shared_path}/database.yml #{current_path}/config/"
   end
 end
 
