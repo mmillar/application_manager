@@ -12,6 +12,8 @@ ApplicationManager::Application.routes.draw do
   root :to => "pages#welcome"
   
   match "/admin", :to => "admin/profiles#index"
+  match "/admin/export", :to => "admin/exports#get_workbook"
+
   namespace :admin do
     resources :profiles
     resources :reviews, :only => [:update]
