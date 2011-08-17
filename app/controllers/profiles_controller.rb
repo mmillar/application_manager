@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
 
     if params[:token] && params[:token] == @profile.token
-      if !@profile.review.offer_accepted.blank?
+      if @profile.review.offer_accepted.blank?
         @profile.review.offer_accepted = DateTime.now
         @profile.review.save
         ProfileMailer.acceptance_confirmation(@profile).deliver
