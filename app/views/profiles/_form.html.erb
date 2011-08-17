@@ -1,6 +1,7 @@
   <%= message_block :on => :profile %>
   <div class="actions table" style="width:100%">
     <% if defined?(edit) %>
+      <%= f.hidden_field :token %>
       <div class="tr">
         <div class="td left">
           <%= f.label :bio, "Bio" %>

@@ -60,14 +60,25 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    if params[:token]
+    if params[:token] || params[:profile][:token]
       check_key_issues(@profile, params)
       @profile.picture = params[:profile][:picture] if params[:profile]
-      @profile.bypass = true if params[:bypass]
+      
+      if params[:bypass]
+        @profile.review.offer_accepted = true
+        @profile.bypass = true
+      end
 
       respond_to do |format|
         if @profile.update_attributes(params[:profile])
-          format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
+          format.html {
+            if params[:bypass]
+              ProfileMailer.acceptance_confirmation(@profile).deliver
+              redirect_to(@profile, :notice => 'confirmed')
+            else
+              redirect_to(@profile, :notice => 'Profile was successfully updated.')
+            end
+          }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
