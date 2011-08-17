@@ -8,6 +8,6 @@
   <p>For more information, check out the <%= link_to 'FAQ', faq_path %> section.</p>
   <p>Click the link below to confirm your participation and start the process.</p>
   <div style="width:100%;text-align:center;margin-top:15px;">
-    <%= button_to 'I accept - sign me up', profile_url(@profile, :token => @profile.token, :bypass => true), :method => :put %>
+    <button onclick="window.location='<%= edit_profile_url(@profile, :token => @profile.token) %>';">I accept - sign me up</button>
   </div>
 </div>
