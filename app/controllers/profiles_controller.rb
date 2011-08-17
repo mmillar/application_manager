@@ -65,7 +65,8 @@ class ProfilesController < ApplicationController
       @profile.picture = params[:profile][:picture] if params[:profile]
       
       if params[:bypass]
-        @profile.review.offer_accepted = true
+        @profile.review.offer_accepted = DateTime.now
+        @profile.review.save
         @profile.bypass = true
       end
 
