@@ -2,7 +2,7 @@
   <h3>Hi <%= @profile.full_name %>,</h3>
   <p>Your participation is confirmed – you are now officially a thestar.com Community Correspondent!</p>
   <p>Look for an email before Labour Day with instructions on how to log in and start publishing content.</p>
-  <p>If you still need to upload your biography or a photograph of yourself, <%= link_to 'please do so here', edit_profile_url(@profile, :token => @profile.token, :host => Rails.application.config.site_host)%></p>
+  <p>If you still need to upload your biography or a photograph of yourself, <%= link_to 'please do so here', edit_profile_url(@profile, :token => @profile.token, :host => Rails.application.config.site_host)%>.</p>
   <p>Thank you!</p>
   <p>Team Speak Your Mind</p>
 </div>
