@@ -14,7 +14,7 @@ class ProfileMailer < ActionMailer::Base
 
   def acceptance_notification(profile)
     @profile = profile
-    mail(:to => profile.email, :subject => "You've been selected as a Community Correspondent")
+    mail(:to => profile.email, :subject => "You've been selected as a Community Blogger")
   end
 
   def acceptance_confirmation(profile)
