@@ -7,9 +7,17 @@
           <%= f.label :bio, "Bio" %>
         </div>
         <div class="td right field-col">
-          <%= f.text_area :bio %>
+          <%= f.text_area :bio, :onkeypress => "return imposeMaxLength(this, 500);" %>
         </div>
       </div>
+      <script language="javascript" type="text/javascript">
+      <!--
+      function imposeMaxLength(Object, MaxLen)
+      {
+        return (Object.value.length <= MaxLen);
+      }
+      -->
+      </script> 
       <div class="tr">
         <div class="td left">
           <%= f.label :picture, "Photo" %>

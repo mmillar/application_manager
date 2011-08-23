@@ -3,12 +3,12 @@
 </div>
 <div class="bottom application">
   <p>Please enter your biography and upload a photograph of yourself below. Both will be publicly visible next to the content that you publish.</p>
-  <p>Your bio should be no longer than 150 words, and should communicate the source of your credibility as a Blogger. We will copy edit your bio for you before it goes live.</p>
+  <p>Your bio should be ~75 words (500 characters), and should communicate the source of your credibility as a blogger. We will copy edit your bio for you before it goes live. For transparency, please briefly note in your bio any affiliations to political parties. For example, "I was a card carrying member for the Federal Liberal party in 2006" or "I volunteered for the Provincial Conservative party in the 2004 election."</p>
   <p>Your photo should be a colour picture of you, with nobody else in the frame. It should be larger than 75 x 75 pixels. We will crop and edit the photo before it goes live.</p>
-  <p style='color:red;'>ONCE YOU SUBMIT YOUR BIO AND PHOTO, YOU WILL NOT BE ABLE TO MAKE ANY CHANGES.</p>
   <%= form_for @profile, :html => {:multipart => true} do |f| %>
     <%= render 'form', :f => f, :edit => true %>
     <div style="width:100%;text-align:center;">
+      <p style='color:red;'>ONCE YOU SUBMIT YOUR BIO AND PHOTO, YOU WILL NOT BE ABLE TO MAKE ANY CHANGES.</p>
       <%= f.submit "Confirm Acceptance", :style => "font-size:2em" %>
     </div>
   <% end %>
