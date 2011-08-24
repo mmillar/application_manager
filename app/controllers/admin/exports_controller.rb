@@ -51,7 +51,11 @@ class Admin::ExportsController < ApplicationController
       tmp_hash["Media Formats"] = profile.media_formats
       tmp_hash["Equipment Access"] = profile.equipment_access
       tmp_hash["Conflicts"] = profile.conflict_of_interest
-      tmp_hash["Other Comments"] = profile.other_comments
+      tmp_hash["Bio"] = profile.bio
+      tmp_hash["Picture"] = "http://speakyourmind.thestar.com#{profile.picture_url.to_s}"
+      tmp_hash["Address"] = profile.address
+      tmp_hash["City"] = profile.city
+      tmp_hash["Postal Code"] = profile.postal_code
       tmp_hash["Status"] = profile.review.status
       
       output << tmp_hash

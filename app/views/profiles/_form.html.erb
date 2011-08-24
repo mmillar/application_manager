@@ -4,6 +4,38 @@
       <%= f.hidden_field :token %>
       <div class="tr">
         <div class="td left">
+          <%= f.label :address, "Address" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :address %>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :city, "City" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :city %>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :province, "Province" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :province %>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :postal_code, "Postal Code" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :postal_code %>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td left">
           <%= f.label :bio, "Bio" %>
         </div>
         <div class="td right field-col">
@@ -209,6 +241,38 @@
         </div>
       </div>
       <% if defined?(admin) %>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :address, "Address" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :address %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :city, "City" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :city %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :province, "Province" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :province %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :postal_code, "Postal Code" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :postal_code %>
+          </div>
+        </div>
         <div class="tr">
           <div class="td">
             <%= f.label :bio, "Bio" %>
