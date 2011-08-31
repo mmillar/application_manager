@@ -9,11 +9,11 @@ class ProfileMailer < ActionMailer::Base
 
   def thank_you(profile)
     @profile = profile
-    mail(:to => profile.email, :subject => "Confirmation of application")
+    mail(:to => profile.email, :bcc => "help@themarknews.com", :subject => "Confirmation of application")
   end
 
   def acceptance_notification(profile)
     @profile = profile
-    mail(:to => profile.email, :subject => "You've been selected as a Community Correspondent")
+    mail(:to => profile.email, :bcc => "help@themarknews.com", :subject => "You've been selected as a Community Correspondent")
   end
 end
