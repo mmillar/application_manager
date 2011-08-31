@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110806000425) do
+ActiveRecord::Schema.define(:version => 20110824042755) do
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(:version => 20110806000425) do
     t.string   "picture"
     t.string   "personal_url"
     t.string   "token"
+    t.string   "address"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
   end
 
   create_table "reviews", :force => true do |t|

@@ -1,14 +1,55 @@
   <%= message_block :on => :profile %>
   <div class="actions table" style="width:100%">
-    <% if edit %>
+    <% if defined?(edit) %>
+      <%= f.hidden_field :token %>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :address, "Address" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :address %>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :city, "City" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :city %>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :province, "Province" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :province %>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td left">
+          <%= f.label :postal_code, "Postal Code" %>
+        </div>
+        <div class="td right field-col">
+          <%= f.text_field :postal_code %>
+        </div>
+      </div>
       <div class="tr">
         <div class="td left">
           <%= f.label :bio, "Bio" %>
         </div>
         <div class="td right field-col">
-          <%= f.text_area :bio %>
+          <%= f.text_area :bio, :onkeypress => "return imposeMaxLength(this, 500);" %>
         </div>
       </div>
+      <script language="javascript" type="text/javascript">
+      <!--
+      function imposeMaxLength(Object, MaxLen)
+      {
+        return (Object.value.length <= MaxLen);
+      }
+      -->
+      </script> 
       <div class="tr">
         <div class="td left">
           <%= f.label :picture, "Photo" %>
@@ -199,6 +240,57 @@
         <%= f.text_area :other_comments %>
         </div>
       </div>
+      <% if defined?(admin) %>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :address, "Address" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :address %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :city, "City" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :city %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :province, "Province" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :province %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td left">
+            <%= f.label :postal_code, "Postal Code" %>
+          </div>
+          <div class="td right field-col">
+            <%= f.text_field :postal_code %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td">
+            <%= f.label :bio, "Bio" %>
+          </div>
+          <div class="td field-col">
+            <%= f.text_area :bio %>
+          </div>
+        </div>
+        <div class="tr">
+          <div class="td">
+            <%= f.label :picture, "Photo" %>
+          </div>
+          <div class="td field-col">
+            <%= image_tag f.object.picture_url.to_s %>
+            <%= f.file_field :picture %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <script type="text/javascript">

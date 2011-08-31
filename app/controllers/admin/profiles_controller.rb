@@ -76,6 +76,7 @@ class Admin::ProfilesController < ApplicationController
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to(admin_profiles_path, :notice => 'Profile was successfully updated.') }
       else
+        @review = (@profile.review)? @profile.review : Review.create!(:profile_id => @profile.id)
         format.html { render :action => "edit" }
       end
     end

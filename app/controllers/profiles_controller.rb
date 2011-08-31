@@ -30,9 +30,13 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
 
     if params[:token] && params[:token] == @profile.token
-      @profile.confirm_email = @profile.email
-      @profile.media_formats = @profile.media_formats.split(",")
-      @profile.equipment_access = @profile.equipment_access.split(",")
+      if @profile.review.offer_accepted.blank?
+        @profile.review.offer_accepted = DateTime.now
+        @profile.review.save
+        ProfileMailer.acceptance_confirmation(@profile).deliver
+      elsif @profile.picture && @profile.bio
+        redirect_to(@profile, :notice => 'confirmed')
+      end
     else
       render 'public/404.html' and return
     end
@@ -60,17 +64,22 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    check_key_issues(@profile, params)
-    @profile.picture = params[:profile][:picture]
+    if params[:token] || params[:profile][:token]
+      @profile.picture = params[:profile][:picture] if params[:profile]
 
-    respond_to do |format|
-      if @profile.update_attributes(params[:profile])
-        format.html { redirect_to(@profile, :notice => 'Profile was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @profile.update_attributes(params[:profile])
+          format.html {
+              redirect_to(@profile, :notice => 'confirmed')
+          }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      render 'public/404.html' and return
     end
   end
 

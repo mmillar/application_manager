@@ -1,6 +1,6 @@
 <div>
-  <h3>Hi <%= @profile.full_name %></h3>
-  <p>Congratulations! You have been selected from a long list of qualified applicants to be a <%= raw("<a href='http://thestar.com'>thestar.com</a>")%> Community Correspondent.</p>
+  <h3>Hi <%= @profile.full_name %>,</h3>
+  <p>Congratulations! You have been selected from a long list of qualified applicants to be a <%= raw("<a href='http://thestar.com'>thestar.com</a>")%> Community Blogger.</p>
   <p>Please click on the URL below for more information and to confirm your participation.</p>
-  <h4><%= link_to 'Confirm participation', edit_profile_url(@profile, :token => @profile.token, :host => Rails.application.config.site_host)%></h4>
+  <h4><%= link_to 'Confirm participation', confirm_url(:token => @profile.token, :host => Rails.application.config.site_host)%></h4>
 </div>

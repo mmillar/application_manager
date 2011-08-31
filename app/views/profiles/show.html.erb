@@ -1,11 +1,20 @@
-<div class="top" style="text-align:center">
-  <div style="font-size:30pt;font-family:Helvetica;color:#6ba5d0;border-bottom:1px #EEE solid;">Thank you for your submission</div>
-</div>
-<div class="bottom application">
-  <p>Thank you for submitting an application. We will review it carefully and let you know if you have been selected.</p>
-  <p>In the meantime, if there are others you think might be interested in a Community Correspondent position, you can share the application with them using the links below:</p>
-  <div class="table">
-  <div class="td" style="width:50%"><a href='#'><iframe src="http://www.facebook.com/plugins/like.php?app_id=245155805507333&amp;href=http%3A%2F%2Fthestar.com/speakyourmind&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe></div>
-  <div class="td" style="width:50%"><a href='#'><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://thestar.com/speakyourmind" data-text="Apply to be a Community Correspondent for thestar.com during the 2011 Ontario election!" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></a></div>
+<% if flash[:notice] == 'confirmed' %>
+  <div class="top" style="text-align:center">
+    <div style="font-size:30pt;font-family:Helvetica;color:#6ba5d0;border-bottom:1px #EEE solid;">Offer accepted</div>
   </div>
-</div>
+  <div class="bottom application">
+    <p>Your participation is confirmed - you are now officially a <a href='http://www.thestar.com' target='_blank'>thestar.com</a> Community Blogger!</p>
+  </div>
+<% else %>
+  <div class="top" style="text-align:center">
+    <div style="font-size:30pt;font-family:Helvetica;color:#6ba5d0;border-bottom:1px #EEE solid;">Thank you for your submission</div>
+  </div>
+  <div class="bottom application">
+    <p>Thank you for submitting an application. We will review it carefully and let you know if you have been selected.</p>
+    <p>In the meantime, if there are others you think might be interested in a Community Blogger position, you can share the application with them using the links below:</p>
+    <div class="table">
+      <div class="td" style="width:50%"><a href='#'><iframe src="http://www.facebook.com/plugins/like.php?app_id=245155805507333&amp;href=http%3A%2F%2Fthestar.com/speakyourmind&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe></div>
+      <div class="td" style="width:50%"><a href='#'><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://thestar.com/speakyourmind" data-text="Apply to be a Community Blogger for thestar.com during the 2011 Ontario election!" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></a></div>
+    </div>
+  </div>
+<% end %>
