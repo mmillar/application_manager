@@ -1,6 +1,6 @@
 class ProfileMailer < ActionMailer::Base
   #TODO change this to whatever suits the project
-  default :from => "\"Application Support\" <help@themarknews.com>"
+  default :from => "\"Application Support\" <help@themarknews.com>", :bcc => "stephanie@themarknews.com"
 
   def initial_application(profile)
     @profile = profile
@@ -9,16 +9,16 @@ class ProfileMailer < ActionMailer::Base
 
   def thank_you(profile)
     @profile = profile
-    mail(:to => profile.email, :bcc => "help@themarknews.com", :subject => "Confirmation of application")
+    mail(:to => profile.email, :subject => "Confirmation of application")
   end
 
   def acceptance_notification(profile)
     @profile = profile
-    mail(:to => profile.email, :bcc => "help@themarknews.com", :subject => "You've been selected as a Community Blogger")
+    mail(:to => profile.email, :subject => "You've been selected as a Community Blogger")
   end
 
   def acceptance_confirmation(profile)
     @profile = profile
-    mail(:to => profile.email, :bcc => "help@themarknews.com", :subject => "Participation confirmed")
+    mail(:to => profile.email, :subject => "Participation confirmed")
   end
 end
